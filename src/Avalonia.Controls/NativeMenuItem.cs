@@ -7,7 +7,6 @@ namespace Avalonia.Controls
 {
     public class NativeMenuItem : NativeMenuItemBase
     {
-        private string _header;
         private KeyGesture _gesture;
         private bool _enabled = true;
 
@@ -74,8 +73,10 @@ namespace Avalonia.Controls
             }
         }
 
-        public static readonly DirectProperty<NativeMenuItem, string> HeaderProperty =
-            AvaloniaProperty.RegisterDirect<NativeMenuItem, string>(nameof(Header), o => o._header, (o, v) => o._header = v);
+        public static readonly StyledProperty<string> HeaderProperty =
+            AvaloniaProperty.Register<NativeMenuItem, string>(
+                nameof(Header),
+                defaultValue: "");
 
         public string Header
         {

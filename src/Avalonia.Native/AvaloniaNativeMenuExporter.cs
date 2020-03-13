@@ -245,6 +245,13 @@ namespace Avalonia.Native
                 if (e.Property.Name == "IsChecked")
                 {
                     _nativeMenuItemsMap[menuItem].IsChecked = menuItem.IsChecked;
+                } 
+                else if (e.Property.Name == "Header")
+                {
+                    using (var buffer = new Utf8Buffer(menuItem.Header))
+                    {
+                        _nativeMenuItemsMap[menuItem].Title = buffer.DangerousGetHandle();
+                    }
                 }
             }
         }
